@@ -23,6 +23,12 @@ public class ProductController {
      @Autowired
     private ProductService productService;
 
+    @PostMapping("/new")
+    public void saveNew(@RequestBody Product product, @RequestParam Long brandId) {  
+        System.out.println("Brand pasado por RequesParam:" + brandId);     
+        productService.newProduct(product, brandId);
+    }
+
     @GetMapping()
     //public List<ProductDto> getAll(){
     public List<Product> getAll(){
@@ -39,10 +45,7 @@ public class ProductController {
         return productService.getOffers(price);
     }
 
-    @PostMapping("/new")
-    public void saveNew(@RequestBody Product product, @RequestParam Long brandId) {       
-        productService.newProduct(product, brandId);
-    }
+    
     @PutMapping("/update")
     public Product update(@RequestBody Product product) {
         return productService.updateProduct(product);

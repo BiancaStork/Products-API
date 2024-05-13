@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import codoacodo.products.exceptions.ResourceNotFoundException;
+import codoacodo.products.models.Brand;
 import codoacodo.products.models.Product;
+import codoacodo.products.repository.BrandRepository;
 import codoacodo.products.repository.ProductRepository;
 
 @Service
@@ -15,6 +17,9 @@ import codoacodo.products.repository.ProductRepository;
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    BrandRepository brandRepository;
 
 //Trae todos los productos (todavia no, desde el DTO)
  // public List<FlightDto> allFlights(){
@@ -40,11 +45,12 @@ public List<Product> getOffers(Integer offerPrice) {
 }
 
 //crear/agregar nuevo producto
-  public void newProduct(Product product, Long Brand) throws ResourceNotFoundException{
+  public void newProduct(Product product, Long brandId) throws ResourceNotFoundException{    
+    System.out.println("Brand pasada por parametro" + brandId);
+    Brand brand = brandRepository.findById(brandId).orElseThrow(()-> new ResourceNotFoundException("Brand not found", "Brand", "id", brandId));
     
-    //Brand brand = brandRepository.findById(brandId).orElseThrow(()-> new ResourceNotFoundException("Brand not found", "Brand", "id", brandId));
    
-    //product.setBrand(brand);
+    product.setBrand(brand);;
     productRepository.save(product);
   }
 
