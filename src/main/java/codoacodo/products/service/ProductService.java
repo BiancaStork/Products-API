@@ -11,6 +11,7 @@ import codoacodo.products.models.Brand;
 import codoacodo.products.models.Product;
 import codoacodo.products.repository.BrandRepository;
 import codoacodo.products.repository.ProductRepository;
+import codoacodo.products.utils.ProductUtils;
 
 @Service
 
@@ -20,6 +21,11 @@ public class ProductService {
 
     @Autowired
     BrandRepository brandRepository;
+
+    @Autowired
+    ProductUtils productUtils;
+
+
 
 //Trae todos los productos (todavia no, desde el DTO)
  // public List<FlightDto> allFlights(){
@@ -40,8 +46,8 @@ public class ProductService {
 //ofertas  
 public List<Product> getOffers(Integer offerPrice) {
     List<Product> products = productRepository.findAll();
-    //return productUtils.detectedOffers(products, offerPrice);
-    return products;    
+    return productUtils.productsOffers(products, offerPrice);
+    
 }
 
 //crear/agregar nuevo producto
