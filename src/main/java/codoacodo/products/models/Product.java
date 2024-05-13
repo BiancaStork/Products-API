@@ -28,7 +28,6 @@ public class Product {
     private String size;
     private String color;
     private String category;
-  //  private String brand_id;
     private double price;
 
      @ManyToOne

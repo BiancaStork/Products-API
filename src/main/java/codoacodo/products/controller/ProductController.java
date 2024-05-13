@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import codoacodo.products.models.Product;
+import codoacodo.products.models.ProductDto;
 import codoacodo.products.service.ProductService;
 
 @RestController
@@ -30,8 +31,7 @@ public class ProductController {
     }
 
     @GetMapping()
-    //public List<ProductDto> getAll(){
-    public List<Product> getAll(){
+    public List<ProductDto> getAll(){
         return productService.allProducts();
     }
 
