@@ -26,8 +26,7 @@ public class ProductController {
 
     @PostMapping("/new")
     public void saveNew(@RequestBody Product product, @RequestParam Long brandId) {  
-        System.out.println("Brand pasado por RequesParam:" + brandId);     
-        productService.newProduct(product, brandId);
+      productService.newProduct(product, brandId);
     }
 
     @GetMapping()

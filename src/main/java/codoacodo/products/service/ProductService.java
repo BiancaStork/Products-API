@@ -58,11 +58,10 @@ public List<Product> getOffers(Integer offerPrice) {
     
 }
 
-//crear/agregar nuevo producto
+//crear/agregar nuevo
   public void newProduct(Product product, Long brandId) throws ResourceNotFoundException{    
-    System.out.println("Brand pasada por parametro" + brandId);
-    Brand brand = brandRepository.findById(brandId).orElseThrow(()-> new ResourceNotFoundException("Brand not found", "Brand", "id", brandId));  
-    product.setBrand(brand);;
+     Brand brand = brandRepository.findById(brandId).orElseThrow(()-> new ResourceNotFoundException("Brand not found", "Brand", "id", brandId));  
+    product.setBrand(brand);
     productRepository.save(product);
   }
 

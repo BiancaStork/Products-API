@@ -17,8 +17,7 @@ BrandRepository brandRepository;
 
 //agregar-crear nuevo
 public void newBrand(Brand brand){
-    System.out.println("desde el Service:" + brand);
-    brandRepository.save(brand);
+   brandRepository.save(brand);
   }
 
 

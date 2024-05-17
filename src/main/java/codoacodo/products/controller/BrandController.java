@@ -25,8 +25,7 @@ public class BrandController {
 
     @PostMapping("/new")
     public void saveNew(@RequestBody Brand brand){
-        System.out.println("desde el Controller:" + brand);
-        brandService.newBrand(brand);
+       brandService.newBrand(brand);
     }
 
     @GetMapping()
